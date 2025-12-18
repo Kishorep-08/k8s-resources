@@ -11,4 +11,5 @@ spec:
     image: nginx:1.29.4
   - name: nodejs
     image: node:20
+    command: ["sleep", "3600"]
     
