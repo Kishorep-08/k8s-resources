@@ -5,5 +5,8 @@ metadata:
   namespace: roboshop
 spec:
   containers:
-  - name: nginx
-    image: niginx
+  # - name: nginx
+  #   image: niginx  # Incorrect image name to simulate error (ImagePullBackOff)
+
+  - name: nodejs
+    image: node:20   # command to keep the container running in not provided to simulate error (CrashLoopBackOff)
