@@ -12,8 +12,8 @@ spec:
     #       name: test-cm
   # This is more controlled way. We can import the keys we want from configMap as env variables. 
     env:
-      - name: TOPIC   # name set for env variable. THis is how u use it echo $TOPIC
-        valueFrom:
-          configMapKeyRef:     # reference to configMap
-            name: test-cm      # name of configMap
-            key: topic        # key from configMap to be used as value for env variable
+    - name: TOPIC   # name set for env variable. THis is how u use it echo $TOPIC
+      valueFrom:
+        configMapKeyRef:     # reference to configMap
+          name: test-cm      # name of configMap
+          key: topic        # key from configMap to be used as value for env variable
