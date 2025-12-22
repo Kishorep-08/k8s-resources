@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-demo
+  selector:
+    project: roboshop
+    environment: dev
+  spec:
+    ports:
+    - protocol: TCP
+      port: 80   # Service Port
+      targetPort: 80  # Pod Container Port
