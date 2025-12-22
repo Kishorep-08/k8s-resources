@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-lb
+spec:
+  selector:
+    project: roboshop
+    environment: dev
+    purpose: loadbalancer
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30020
