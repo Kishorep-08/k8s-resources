@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: svc-np-pod
+  labels: 
+    project: roboshop
+    environment: dev
+    purpose: nodeport
+  spec:
+    containers:
+      - name: nginx
+        image: nginx
