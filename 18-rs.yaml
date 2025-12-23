@@ -11,7 +11,7 @@ spec:
   selector:
     matchLabels:
       project: roboshop
-      environment: dev
+      environment: dev-rs
       purpose: rs
   # pod template used by replicaset to create pods
   template:
@@ -19,7 +19,8 @@ spec:
     # this pod template labels must match selector
       labels:
         project: roboshop
-        environment: dev
+        environment: dev-rs
+        purpose: rs
     spec:
       containers:
         - name: nginx
