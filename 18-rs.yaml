@@ -12,6 +12,7 @@ spec:
     matchLabels:
       project: roboshop
       environment: dev
+      purpose: rs
   # pod template used by replicaset to create pods
   template:
     metadata:
