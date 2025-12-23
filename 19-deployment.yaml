@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-demo
+  # labels for deployment. These can be different from pod labels and selector. These are just for deployment identification
+  labels:
+    project: roboshop
+    environment: dev
+spec:
+  replicas: 3
+  # selector to identify pods managed by deployment
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+  template:
+    metadata:
+      # pod template labels. Should match selector
+      labels:
+        project: roboshop
+        environment: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx

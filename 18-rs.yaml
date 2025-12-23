@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs-demo
+  # replicaset labels
+  labels:
+    app: rs-app
+spec:
+  replicas: 3
+  # selector must match pod template labels
+  selector:
+    matchlabels:
+      project: roboshop
+      environment: dev
+  # pod template used by replicaset to create pods
+  template:
+    metadata:
+    # this pod template labels must match selector
+      labels:
+        project: roboshop
+        environment: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
