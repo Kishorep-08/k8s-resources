@@ -9,7 +9,7 @@ spec:
   replicas: 3
   # selector must match pod template labels
   selector:
-    matchlabels:
+    matchLabels:
       project: roboshop
       environment: dev
   # pod template used by replicaset to create pods
