@@ -1,0 +1,21 @@
+apiversion: v1
+kind: Pod
+metadata:
+  name: emptydir-pod
+spec:
+  containers:
+    - name : nginx
+      image: nginx
+      volumeMounts:
+        - name: emptydir-vol
+          mountPath: /var/log/nginx  # Path inside the container where the emptyDir volume will be mounted
+    - name: almalinux
+      image: almalinux
+      command: ["sleep", "infinity"]
+      volumeMounts:
+        - name: emptydir-vol
+          mountPath: /data  # Path inside the container where the emptyDir volume will be mounted
+  volumes:
+    - name: emptydir-vol
+      emptyDir:
+        sizeLimit: "200Mi"  # Optional: Limit the size of the emptyDir volume
