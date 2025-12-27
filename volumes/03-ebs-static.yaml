@@ -17,15 +17,15 @@ spec:
 
 ---
 # PVC for AWS EBS Volume
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ebs-static-pvc
-spec:
-  storageClassName: ""
-  volumeName: ebs-static-pv
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 15Gi
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: ebs-static-pvc
+# spec:
+#   storageClassName: ""
+#   volumeName: ebs-static-pv
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 15Gi
