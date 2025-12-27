@@ -29,3 +29,23 @@ spec:
   resources:
     requests:
       storage: 15Gi
+
+---
+# Pod using the PVC
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-ebs
+spec:
+  volumes:
+    - name: ebs-volume
+      persistentVolumeClaim:
+        claimName: ebs-static-pvc
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: ebs-volume
+          mountPath: /usr/share/nginx/html          
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1c
