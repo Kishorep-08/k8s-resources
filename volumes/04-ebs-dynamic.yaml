@@ -1,0 +1,11 @@
+---
+# Storages class for EBS dynamic provsioning
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: roboshop-ebs
+reclaimPolicy: Retain      # Volume along with data will be retained even after PVC deletion, Delete- volume is deleted when pvc is deleted
+provisioner: ebs.csi.aws.com  # Uses AWS EBS CSI driver for dynamically create PVs
+volumeBindingMode: WaitForFirstConsumer 
+
+---
