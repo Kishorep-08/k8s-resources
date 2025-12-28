@@ -13,7 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com                 # EFS driver
-    volumeHandle: fs-0f47952c6f5008d2e
+    volumeHandle: fs-090955993cf897055
 
 ---
 # PVC for EFS Volume
@@ -31,7 +31,6 @@ spec:
 
 ---
 # Pod using the PVC
-
 apiVersion: v1
 kind: Pod
 metadata:

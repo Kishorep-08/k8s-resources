@@ -28,6 +28,7 @@ spec:
       storage: 5Gi
 
 ---
+# Pod
 apiVersion: v1
 kind: Pod
 metadata:
@@ -42,4 +43,4 @@ spec:
   volumes:
   - name: persistent-storage
     persistentVolumeClaim:
-      claimName: efs-dynamic-claim
+      claimName: efs-dynamic
