@@ -15,17 +15,17 @@ volumeBindingMode: Immediate
 
 ---
 # PVC 
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: efs-dynamic
-# spec:
-#   accessModes:
-#     - ReadWriteMany
-#   storageClassName: efs-sc
-#   resources:
-#     requests:
-#       storage: 5Gi
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-dynamic
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 5Gi
 
 ---
 # Pod
