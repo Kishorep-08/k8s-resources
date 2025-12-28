@@ -7,7 +7,7 @@ metadata:
 provisioner: efs.csi.aws.com
 parameters:
   provisioningMode: efs-ap
-  fileSystemId: fs-0f47952c6f5008d2e
+  fileSystemId: fs-090955993cf897055
   basePath: "/dynamic_provisioning"
   directoryPerms: "700"
 reclaimPolicy: Delete
