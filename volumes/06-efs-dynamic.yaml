@@ -18,7 +18,7 @@ volumeBindingMode: Immediate
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: efs-claim
+  name: efs-dynamice-claim
 spec:
   accessModes:
     - ReadWriteMany
@@ -42,4 +42,4 @@ spec:
   volumes:
   - name: persistent-storage
     persistentVolumeClaim:
-      claimName: efs-claim
+      claimName: efs-dynamic-claim
