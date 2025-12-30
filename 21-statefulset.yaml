@@ -1,0 +1,78 @@
+---
+# Headless service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-headless
+spec:
+  clusterIP: None
+  selector:
+    project: roboshop
+    environment: dev
+  ports:
+    - protocol: TCP
+      targetPort: 80
+      port: 80
+
+---
+# Normal service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector:
+    project: roboshop
+    environment: dev
+  ports:
+  - protocol: TCP
+    port: 80   # Service Port
+    targetPort: 80  # Pod Container Port
+
+---
+# Storage class
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: roboshop-ebs
+reclaimPolicy: Retain      # Volume along with data will be retained even after PVC deletion, Delete- volume is deleted when pvc is deleted
+provisioner: ebs.csi.aws.com  # Uses AWS EBS CSI driver for dynamically create PVs
+volumeBindingMode: WaitForFirstConsumer
+
+---
+# StatefulSet
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev 
+  serviceName: "nginx-headless"
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        environment: dev
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  # This is PVC
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "roboshop-ebs"
+      resources:
+        requests:
+          storage: 1Gi
