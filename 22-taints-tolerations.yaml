@@ -22,7 +22,7 @@ spec:
     spec:
       tolerations:
         - key: "project"
-          operator: Equals
+          operator: Equal
           value: "roboshop"
           effect: "NoSchedule"
       containers:
